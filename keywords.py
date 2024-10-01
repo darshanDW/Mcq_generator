@@ -1,5 +1,7 @@
 import re
 import nltk
+nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('wordnet')
 from nltk.corpus import stopwords
 from rake_nltk import Rake
 
@@ -54,15 +56,10 @@ def get_sentences_for_keyword(keywords, sentences):
 
     for key in keyword_sentences.keys():
         values = keyword_sentences[key]
+       
         values = sorted(values, key=len, reverse=True)
-        # print(values,'\n')
-        if len(values)==0 :
-            continue
-        print(values,'\n')
         keyword_sentences[key] = values
     return keyword_sentences
-
-
 
 
 
@@ -70,17 +67,6 @@ file_path = 'C:/Users/asus/OneDrive/Desktop/ai/summary.txt'
 
 text = read_text_file(file_path)
 filtered_text = remove_stopwords(text)
-# print(f"\nFiltered Text (without stopwords):\n{filtered_text}")
-# keywords_with_ranks = extract_keywords_with_ranks(filtered_text)
-# for score, keyword in keywords_with_ranks:
-# print(f"Keyword: {keyword} - Score: {score}")
-
 keywords=extract_keywords(filtered_text)
-# print("fsfsf",keywords)
-# print("\nRanked Keywords with Scores (single words or two-word phrases):")
-
 sentences = tokenize_sentences(text)
-# print(sentences)
 keyword_sentence_mapping = get_sentences_for_keyword(keywords, sentences)
-# keyword_sentence_mapping
-# print (keyword_sentence_mapping)
