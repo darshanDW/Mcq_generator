@@ -91,9 +91,7 @@ for keyword in keyword_sentence_mapping:
             key_distractor_list[keyword] = distractors
 
 index = 1
-print ("#############################################################################")
-print ("NOTE::::::::  Since the algorithm might have errors along the way, wrong answer choices generated might not be correct for some questions. ")
-print ("#############################################################################\n\n")
+
 for each in key_distractor_list:
     sentence = keyword_sentence_mapping[each][0]
     pattern = re.compile(each, re.IGNORECASE)
@@ -107,4 +105,4 @@ for each in key_distractor_list:
         print ("\t",optionchoices[idx],")"," ",choice)
     print("ANS:",each,'\n')
     # print ("\nMore options: ", choices[4:20],"\n\n")
-    index = index + 1
+    index = index + 1   
